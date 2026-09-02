@@ -802,37 +802,66 @@ footer {
 
 /* --- Mobile View Enhancements --- */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+    flex-wrap: wrap;
+    position: sticky;
+  }
+
+  .logo-container {
+    gap: 8px;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .status-badge {
+    font-size: 0.68rem;
+    padding: 2px 8px;
+  }
+
   .hamburger {
     display: block;
+    margin-left: auto; /* Pushes the hamburger button explicitly to the top-right */
   }
 
   .nav-links {
     display: none;
     width: 100%;
     flex-direction: column;
-    margin-top: 16px;
+    margin: 12px 0 4px;
+    gap: 4px;
   }
 
   .nav-links.active {
     display: flex;
   }
 
-  .navbar {
-    flex-wrap: wrap;
+  .nav-item {
+    font-size: 0.88rem;
+    padding: 8px 12px;
+    width: 100%;
+    text-align: center;
   }
 
   .full-screen-section {
-    min-height: 0; /* FIXED: Prevents browser compatibility warning */
-    padding: 50px 16px;
+    min-height: auto; /* Relaxes strict screen height to eliminate tight mobile overflow */
+    padding: 36px 14px;
   }
 
   .hero-slide {
-    min-height: calc(100vh - 70px);
-    padding: 60px 16px;
+    min-height: calc(100vh - 60px);
+    padding: 40px 16px;
   }
 
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
   }
 
   .about-slide.active {
