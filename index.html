@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Section: Document Metadata & Head Configuration -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Grind Cafe | Specialty Coffee & Productivity Space</title>
     <meta name="description" content="Welcome to Daily Grind Cafe. The ultimate study and work-from-home coffee hub in Caloocan serving Double Chocolate Coffee, fresh pastries, and light meals.">
     
-    <!-- Section: Structured Data (SEO / Schema.org) -->
+    <!-- Schema markup for local cafe -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -19,25 +18,24 @@
     }
     </script>
 
-    <!-- Section: Stylesheets & Icon Libraries -->
+    <!-- Stylesheets & Icon fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="index.css">
     <link rel="icon" type="image/jpeg" href="images/Logo.jpg">
 </head>
 <body>
 
-    <!-- Section: Main Navigation Header -->
+    <!-- Main Navigation Bar -->
     <header class="navbar">
         <div class="logo-container">
             <a href="#home" class="logo">
                 <i class="fa-solid fa-mug-hot brand-logo-icon"></i>
                 Daily Grind Cafe
             </a>
-            <!-- Dynamic Store Status Badge (Updated via JS) -->
+            <!-- Store opening hours badge toggled in JS -->
             <div id="store-status" class="status-badge"><i class="fa-solid fa-circle"></i> Checking hours...</div>
         </div>
 
-        <!-- Navigation Links -->
         <nav class="nav-links" id="nav-links">
             <a href="#home" class="nav-item active">Home</a>
             <a href="#menu" class="nav-item">Menu</a>
@@ -48,13 +46,12 @@
             <a href="#reviews" class="nav-item">Reviews</a>
         </nav>
 
-        <!-- Mobile Menu Toggle Button -->
         <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation">☰</button>
     </header>
 
     <main>
 
-        <!-- Section: Hero Banner & Main Tagline -->
+        <!-- Hero Section & Slide Track -->
         <section id="home" class="hero-section full-screen-section">
             <div class="hero-slider-track" id="hero-slider-track">
                 
@@ -128,7 +125,6 @@
 
             </div>
 
-            <!-- Hero Slider Indicators -->
             <div class="slider-dots">
                 <span class="dot active" onclick="setSlide(0)"></span>
                 <span class="dot" onclick="setSlide(1)"></span>
@@ -138,12 +134,11 @@
         </section>
 
 
-        <!-- Section: Cafe Menu -->
+        <!-- Menu Section -->
         <section id="menu" class="page-section full-screen-section">
             <div class="section-container">
                 <h2 class="section-title">Our Menu</h2>
 
-                <!-- Menu Search Bar -->
                 <div class="search-container">
                     <div class="search-input-wrapper">
                         <i class="fa-solid fa-magnifying-glass search-icon"></i>
@@ -151,7 +146,6 @@
                     </div>
                 </div>
 
-                <!-- Category Filters -->
                 <div class="filter-container">
                     <button class="filter-btn active" data-category="all">All Items</button>
                     <button class="filter-btn" data-category="hot-coffee">Hot Drinks</button>
@@ -162,10 +156,8 @@
                     <button class="filter-btn" data-category="pasta">Pastas</button>
                 </div>
 
-                <!-- Menu Item Cards -->
                 <div class="menu-grid" id="menu-grid">
                     
-                    <!-- Star Product Highlight -->
                     <div class="card" data-category="iced-coffee">
                         <div class="card-img-container"><img src="images/Doublechoco.jpg" alt="Double Chocolate Coffee"></div>
                         <div class="card-info">
@@ -175,7 +167,6 @@
                         </div>
                     </div>
 
-                    <!-- Hot Drinks -->
                     <div class="card" data-category="hot-coffee">
                         <div class="card-img-container"><img src="images/Hotamericanodg.jpg" alt="Hot Americano"></div>
                         <div class="card-info">
@@ -194,7 +185,6 @@
                         </div>
                     </div>
 
-                    <!-- Cold Drinks -->
                     <div class="card" data-category="iced-coffee">
                         <div class="card-img-container"><img src="images/Spanishlatteiced.jpg" alt="Iced Spanish Latte"></div>
                         <div class="card-info">
@@ -204,7 +194,6 @@
                         </div>
                     </div>
 
-                    <!-- Non-Coffee -->
                     <div class="card" data-category="non-coffee">
                         <div class="card-img-container"><img src="images/Strawberrymilkcreamfrappe.jpg" alt="Strawberry Cream Milk"></div>
                         <div class="card-info">
@@ -214,7 +203,6 @@
                         </div>
                     </div>
 
-                    <!-- Pastries -->
                     <div class="card" data-category="pastry">
                         <div class="card-img-container"><img src="images/kgb.jpeg" alt="Korean Garlic Bun"></div>
                         <div class="card-info">
@@ -224,7 +212,6 @@
                         </div>
                     </div>
 
-                    <!-- Sodas -->
                     <div class="card" data-category="soda">
                         <div class="card-img-container"><img src="images/Blueberrymintsoda.jpg" alt="Blueberry Mint Soda"></div>
                         <div class="card-info">
@@ -234,7 +221,6 @@
                         </div>
                     </div>
 
-                    <!-- Pastas -->
                     <div class="card" data-category="pasta">
                         <div class="card-img-container"><img src="images/Creamybaconcarbonara.jpg" alt="Creamy Carbonara"></div>
                         <div class="card-info">
@@ -249,13 +235,12 @@
         </section>
 
 
-        <!-- Section: About Us & Cafe Story -->
+        <!-- About Us Section -->
         <section id="about" class="page-section alt-bg full-screen-section">
             <div class="section-container text-center">
                 <h2 class="section-title">About Daily Grind Cafe</h2>
                 <p class="description-text mb-20">Your neighborhood work-and-study refuge. Designed for productivity, built on great coffee.</p>
 
-                <!-- Key Metrics & Highlights -->
                 <div class="stats-grid">
                     <div class="stat-card">
                         <span class="stat-number" data-target="100">0</span><span class="stat-plus">%</span>
@@ -271,7 +256,6 @@
                     </div>
                 </div>
 
-                <!-- Storytelling Carousel (Cafe de Melle 2-Column Format) -->
                 <div class="about-carousel" id="about-carousel">
                     <div class="about-slide active">
                         <div class="about-img-wrapper">
@@ -313,7 +297,6 @@
                     <span class="about-dot" onclick="setAboutSlide(2)"></span>
                 </div>
 
-                <!-- Value Highlights -->
                 <h3 class="subsection-title">Why Students & Remote Workers Choose Us</h3>
                 <div class="values-grid">
                     <div class="value-card">
@@ -336,7 +319,7 @@
         </section>
 
 
-        <!-- Section: Location & Map -->
+        <!-- Location & Map Section -->
         <section id="location" class="page-section full-screen-section">
             <div class="section-container text-center">
                 <h2 class="section-title">Visit Our Store</h2>
@@ -358,7 +341,7 @@
         </section>
 
 
-        <!-- Section: Social Media Connections -->
+        <!-- Socials & Connect Section -->
         <section id="socials" class="page-section alt-bg full-screen-section">
             <div class="section-container text-center">
                 <h2 class="section-title">Follow Us & Stay Connected!</h2>
@@ -394,7 +377,7 @@
         </section>
 
 
-        <!-- Section: GrabFood Delivery Instructions -->
+        <!-- Grab Order Section -->
         <section id="grab" class="page-section full-screen-section">
             <div class="section-container text-center">
                 <h2 class="section-title">How to Order via Grab</h2>
@@ -442,12 +425,11 @@
         </section>
 
 
-        <!-- Section: Customer Reviews -->
+        <!-- Reviews Section -->
         <section id="reviews" class="page-section alt-bg full-screen-section">
             <div class="section-container text-center">
                 <h2 class="section-title">Customer Reviews</h2>
                 
-                <!-- Overall Rating Card -->
                 <div class="rating-summary-card mb-40">
                     <div class="rating-big">4.9</div>
                     <div class="rating-details">
@@ -464,7 +446,6 @@
 
                 <div class="reviews-grid">
                     
-                    <!-- Customer Review Card 1 (Male) -->
                     <div class="review-card">
                         <div class="review-header">
                             <div class="avatar-circle">
@@ -493,7 +474,6 @@
                         </div>
                     </div>
 
-                    <!-- Customer Review Card 2 (Male) -->
                     <div class="review-card">
                         <div class="review-header">
                             <div class="avatar-circle">
@@ -522,7 +502,6 @@
                         </div>
                     </div>
 
-                    <!-- Customer Review Card 3 (Female) -->
                     <div class="review-card">
                         <div class="review-header">
                             <div class="avatar-circle">
@@ -553,7 +532,6 @@
 
                 </div>
 
-                <!-- Review Call to Action -->
                 <div class="review-cta-box">
                     <p>Studied with us recently or ordered on Grab? Share your feedback with us!</p>
                     <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="btn">Leave a Review on Facebook</a>
@@ -564,12 +542,10 @@
 
     </main>
 
-    <!-- Section: Footer -->
     <footer>
         <p>&copy; 2026 Daily Grind Cafe. All Rights Reserved.</p>
     </footer>
 
-    <!-- Section: Scripts -->
     <script src="index.js"></script>
 </body>
 </html>
