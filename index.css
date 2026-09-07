@@ -1,4 +1,4 @@
-/* --- Global Styles & Brand Color Palette --- */
+/* Color palette and global CSS variables */
 :root {
   --bg-dark: #231916;
   --bg-light: #F4EFEA;
@@ -13,7 +13,6 @@
   --radius-pill: 50px;
 }
 
-/* Enable smooth scrolling across anchors */
 html {
   scroll-behavior: smooth;
 }
@@ -29,9 +28,10 @@ body {
   background-color: var(--bg-light);
   color: var(--text-dark);
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
-/* --- Header & Navigation --- */
+/* Sticky top navigation */
 .navbar {
   background-color: var(--bg-dark);
   color: #ffffff;
@@ -78,12 +78,12 @@ body {
   gap: 6px;
 }
 
-/* CENTER NAVIGATION LINKS */
+/* Center menu links */
 .nav-links {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin: 0 auto; /* Centers menu items horizontally */
+  margin: 0 auto;
 }
 
 .nav-item {
@@ -109,7 +109,7 @@ body {
   cursor: pointer;
 }
 
-/* --- Full Screen Section Formatting --- */
+/* Main wrapper & layout helpers */
 main {
   width: 100%;
 }
@@ -121,7 +121,7 @@ main {
   justify-content: center;
   align-items: center;
   padding: 60px 20px;
-  scroll-margin-top: 70px; /* FIXED: Accounts for sticky navbar height on section jump */
+  scroll-margin-top: 70px; /* offset for sticky navbar height */
 }
 
 .page-section {
@@ -163,23 +163,26 @@ main {
 .mb-20 { margin-bottom: 20px; }
 .mb-40 { margin-bottom: 36px; }
 
-/* --- Hero Section (Sliding Slider Implementation) --- */
+/* Hero slider container and track */
 .hero-section {
   position: relative;
   background-color: var(--bg-dark);
   color: #ffffff;
   text-align: center;
-  touch-action: pan-y; /* Allows horizontal swipe while preserving smooth scrolling */
+  touch-action: pan-y;
   overflow: hidden;
-  padding: 0;
-  display: block; /* FIXED: Prevents side-by-side flex splitting of track and dots */
+  padding: 0 !important;
+  display: block;
+  width: 100%;
 }
 
 .hero-slider-track {
   display: flex;
-  width: 400%; /* 4 Slides total */
+  width: 400%;
   height: 100%;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  margin: 0;
+  padding: 0;
 }
 
 .hero-slide {
@@ -193,9 +196,10 @@ main {
   background-size: cover;
   background-position: center;
   min-height: calc(100vh - 70px);
+  box-sizing: border-box;
 }
 
-/* External background image mapping to eliminate HTML inline style warnings */
+/* Background image mappings for slider */
 .hero-slide:nth-child(1) { background-image: url('images/Banner1.jpg'); }
 .hero-slide:nth-child(2) { background-image: url('images/Banner2.jpg'); }
 .hero-slide:nth-child(3) { background-image: url('images/Banner3.jpg'); }
@@ -270,7 +274,7 @@ main {
   transform: scale(1.2);
 }
 
-/* --- Search & Menu Grid --- */
+/* Menu filter buttons, search input & card grid */
 .search-container {
   max-width: 500px;
   margin: 0 auto 20px;
@@ -349,12 +353,11 @@ main {
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
-/* FIXED: Standardized image container & object fit across all cards */
 .card-img-container {
   width: 100%;
   height: 220px;
   overflow: hidden;
-  background-color: #FAF6F0; /* Soft container background matching Double Chocolate Coffee */
+  background-color: #FAF6F0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -365,7 +368,7 @@ main {
 .card-img-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Aligned to fill image card cleanly like Double Chocolate Coffee layout */
+  object-fit: cover;
   object-position: center;
   transition: transform 0.3s ease;
 }
@@ -400,7 +403,7 @@ main {
   font-size: 1.1rem;
 }
 
-/* --- About Carousel & Core Values (Cafe de Melle 2-Column Layout) --- */
+/* About section and carousel */
 #about {
   padding: 40px 20px;
 }
@@ -432,7 +435,6 @@ main {
   color: var(--accent-gold);
 }
 
-/* Carousel container styled like Cafe de Melle */
 .about-carousel {
   position: relative;
   max-width: 920px;
@@ -449,7 +451,7 @@ main {
 }
 
 .about-slide.active {
-  display: flex; /* Split side-by-side view like Cafe de Melle */
+  display: flex;
   flex-direction: row;
   align-items: center;
 }
@@ -470,6 +472,7 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .about-text {
@@ -490,7 +493,6 @@ main {
   color: var(--text-muted);
 }
 
-/* Green round navigation buttons matching Cafe de Melle button style */
 .about-btn {
   position: absolute;
   top: 50%;
@@ -539,28 +541,49 @@ main {
   border-radius: var(--radius-pill);
 }
 
+/* Values & Perks grid items */
 .values-grid,
 .social-perks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
 .value-card,
 .social-card {
   background-color: var(--card-bg);
-  padding: 20px 16px;
+  padding: 24px 20px;
   border-radius: var(--radius-card);
   text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.value-card h4,
+.social-card h4 {
+  font-size: 1.05rem;
+  color: var(--bg-dark);
+  margin-bottom: 8px;
+}
+
+.value-card p,
+.social-card p {
+  font-size: 0.90rem;
+  color: var(--text-muted);
+  line-height: 1.45;
 }
 
 .feature-svg-icon {
   font-size: 1.8rem;
   color: var(--text-dark);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-/* --- Map & Location --- */
+/* Map embed section */
 .map-container {
   border-radius: var(--radius-card);
   overflow: hidden;
@@ -574,7 +597,7 @@ main {
   margin-right: 6px;
 }
 
-/* --- Buttons --- */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -611,10 +634,10 @@ main {
   font-size: 1.1rem;
 }
 
-/* --- Grab Instructions --- */
+/* Step cards for Grab ordering process */
 .steps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-bottom: 30px;
 }
@@ -623,6 +646,7 @@ main {
   background-color: var(--card-bg);
   padding: 24px 16px;
   border-radius: var(--radius-card);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
 }
 
 .step-number {
@@ -660,7 +684,7 @@ main {
   color: #00B14F;
 }
 
-/* --- Professional Reviews Styling --- */
+/* Customer reviews & star ratings */
 .rating-summary-card {
   background-color: var(--card-bg);
   display: inline-flex;
@@ -668,6 +692,7 @@ main {
   gap: 20px;
   padding: 18px 30px;
   border-radius: var(--radius-card);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
 }
 
 .rating-big {
@@ -685,7 +710,7 @@ main {
 
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-bottom: 30px;
 }
@@ -699,6 +724,7 @@ main {
   flex-direction: column;
   text-align: left;
   box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  height: 100%;
 }
 
 .review-header {
@@ -720,14 +746,14 @@ main {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  overflow: hidden; /* Clips image to circle */
+  overflow: hidden;
 }
 
 .avatar-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Keeps image proportions sharp */
-  object-position: center; /* FIXED: Perfectly centers avatar content inside circle */
+  object-fit: cover;
+  object-position: center;
   border-radius: 50%;
 }
 
@@ -791,7 +817,7 @@ main {
   font-weight: 600;
 }
 
-/* --- Footer --- */
+/* Footer styling */
 footer {
   background-color: var(--bg-dark);
   color: #ffffff;
@@ -800,68 +826,67 @@ footer {
   font-size: 0.88rem;
 }
 
-/* --- Mobile View Enhancements --- */
+/* Mobile adjustments */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 12px 20px;
-    flex-wrap: wrap;
-    position: sticky;
-  }
-
-  .logo-container {
-    gap: 8px;
-  }
-
-  .logo {
-    font-size: 1.1rem;
-  }
-
-  .status-badge {
-    font-size: 0.68rem;
-    padding: 2px 8px;
-  }
-
   .hamburger {
     display: block;
-    margin-left: auto; /* Pushes the hamburger button explicitly to the top-right */
   }
 
   .nav-links {
     display: none;
     width: 100%;
     flex-direction: column;
-    margin: 12px 0 4px;
-    gap: 4px;
+    margin-top: 16px;
   }
 
   .nav-links.active {
     display: flex;
   }
 
-  .nav-item {
-    font-size: 0.88rem;
-    padding: 8px 12px;
-    width: 100%;
-    text-align: center;
+  .navbar {
+    flex-wrap: wrap;
+    padding: 14px 20px;
   }
 
   .full-screen-section {
-    min-height: auto; /* Relaxes strict screen height to eliminate tight mobile overflow */
-    padding: 36px 14px;
+    min-height: 0;
+    padding: 50px 16px;
+  }
+
+  .hero-section {
+    padding: 0 !important;
+    width: 100%;
+    overflow: hidden;
   }
 
   .hero-slide {
-    min-height: calc(100vh - 60px);
-    padding: 40px 16px;
+    min-height: calc(100vh - 70px);
+    padding: 60px 20px 50px;
+    box-sizing: border-box;
   }
 
   .hero-content h1 {
-    font-size: 1.8rem;
+    font-size: 1.85rem;
   }
 
   .hero-content p {
-    font-size: 0.95rem;
-    margin-bottom: 20px;
+    font-size: 1rem;
+  }
+
+  .values-grid,
+  .social-perks-grid,
+  .steps-grid,
+  .reviews-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .value-card,
+  .social-card,
+  .review-card,
+  .step-card {
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .about-slide.active {
@@ -870,23 +895,44 @@ footer {
 
   .about-img-wrapper {
     width: 100%;
-    height: 220px;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    min-height: 240px;
+    max-height: 320px;
+  }
+
+  .about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 58%;
   }
 
   .about-text {
     width: 100%;
-    padding: 20px;
+    padding: 24px 20px;
     text-align: center;
+  }
+
+  .about-btn {
+    top: clamp(110px, 25vw, 150px);
   }
 
   .card-img-container {
     height: 180px;
   }
+
+  .rating-summary-card {
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    text-align: center;
+  }
 }
 
-/* --- Empty Search Result State --- */
+/* Empty state message when search yields no matches */
 .no-results-message {
-  grid-column: 1 / -1; /* Spans across all columns in the grid */
+  grid-column: 1 / -1;
   background-color: var(--card-bg);
   border-radius: var(--radius-card);
   padding: 40px 20px;
