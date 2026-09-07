@@ -1,7 +1,3 @@
-/* ===========================================================================
-   DAILY GRIND CAFE - MAIN JAVASCRIPT FILE (index.js)
-   =========================================================================== */
-
 document.addEventListener("DOMContentLoaded", () => {
   initHamburgerMenu();
   initOpenClosedBadge();
@@ -13,10 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSwipeGestures();
 });
 
-
-/* ---------------------------------------------------------------------------
-   FEATURE 1: MOBILE HAMBURGER MENU TOGGLE & AUTO-CLOSE
-   --------------------------------------------------------------------------- */
+// Toggle mobile menu on hamburger button click & close when selecting a menu link
 function initHamburgerMenu() {
   const hamburgerBtn = document.getElementById("hamburger-btn");
   const navLinks = document.getElementById("nav-links");
@@ -37,10 +30,7 @@ function initHamburgerMenu() {
   });
 }
 
-
-/* ---------------------------------------------------------------------------
-   FEATURE 2: STORE OPERATING HOURS BADGE
-   --------------------------------------------------------------------------- */
+// Check current time to toggle store status badge (Open: 9:00 AM to 2:00 AM)
 function initOpenClosedBadge() {
   const statusBadge = document.getElementById("store-status");
   if (!statusBadge) return;
@@ -57,10 +47,7 @@ function initOpenClosedBadge() {
   }
 }
 
-
-/* ---------------------------------------------------------------------------
-   FEATURE 3: UNIFIED LIVE SEARCH & CATEGORY FILTERS WITH "NO RESULTS" FEEDBACK
-   --------------------------------------------------------------------------- */
+// Menu search bar and category filter handlers
 function initMenuFiltersAndSearch() {
   const filterButtons = document.querySelectorAll(".filter-btn");
   const searchInput = document.getElementById("menu-search");
@@ -89,11 +76,9 @@ function initMenuFiltersAndSearch() {
       }
     });
 
-    // Check if a "no results" element already exists inside the menu grid
     let noResultsEl = document.getElementById("no-results-msg");
 
     if (visibleCount === 0) {
-      // If no cards match, create and append the empty state card if it doesn't exist yet
       if (!noResultsEl && menuGrid) {
         noResultsEl = document.createElement("div");
         noResultsEl.id = "no-results-msg";
@@ -106,7 +91,6 @@ function initMenuFiltersAndSearch() {
         menuGrid.appendChild(noResultsEl);
       }
     } else {
-      // If matches are found, remove the empty state element
       if (noResultsEl) {
         noResultsEl.remove();
       }
@@ -126,10 +110,7 @@ function initMenuFiltersAndSearch() {
   }
 }
 
-
-/* ---------------------------------------------------------------------------
-   FEATURE 4: HERO ANNOUNCEMENT CAROUSEL SLIDER (SLIDING ANIMATION)
-   --------------------------------------------------------------------------- */
+// Hero banner slider state and interval
 let currentSlide = 0;
 let heroInterval;
 const totalHeroSlides = 4;
@@ -157,7 +138,6 @@ function updateHeroSlide(index) {
   const dots = document.querySelectorAll(".slider-dots .dot");
 
   if (heroTrack) {
-    /* Translate the horizontal container smooth left to right */
     heroTrack.style.transform = `translateX(-${index * 25}%)`;
 
     dots.forEach((dot, idx) => {
@@ -166,10 +146,7 @@ function updateHeroSlide(index) {
   }
 }
 
-
-/* ---------------------------------------------------------------------------
-   FEATURE 5: ABOUT SECTION CAROUSEL CONTROLLER
-   --------------------------------------------------------------------------- */
+// About section slide navigation
 let currentAboutSlide = 0;
 
 function initAboutCarousel() {
@@ -212,12 +189,8 @@ function updateAboutSlide(index) {
   });
 }
 
-
-/* ---------------------------------------------------------------------------
-   FEATURE 6: MOBILE TOUCH SWIPE SUPPORT FOR HERO & ABOUT
-   --------------------------------------------------------------------------- */
+// Touch swipe logic for mobile users
 function initSwipeGestures() {
-  // Mobile touch swipe logic for Hero Section
   const heroElem = document.querySelector(".hero-section");
   if (heroElem) {
     let touchStartX = 0;
@@ -234,18 +207,15 @@ function initSwipeGestures() {
 
     function handleSwipe() {
       if (touchStartX - touchEndX > 40) {
-        // Swipe left -> Next slide
         currentSlide = (currentSlide + 1) % totalHeroSlides;
         updateHeroSlide(currentSlide);
       } else if (touchEndX - touchStartX > 40) {
-        // Swipe right -> Prev slide
         currentSlide = (currentSlide - 1 + totalHeroSlides) % totalHeroSlides;
         updateHeroSlide(currentSlide);
       }
     }
   }
 
-  // Mobile touch swipe logic for About Section Carousel
   const aboutElem = document.getElementById("about-carousel");
   if (aboutElem) {
     let aboutStartX = 0;
@@ -263,11 +233,9 @@ function initSwipeGestures() {
     function handleAboutSwipe() {
       const aboutSlidesCount = document.querySelectorAll(".about-slide").length;
       if (aboutStartX - aboutEndX > 40) {
-        // Swipe left -> Next slide
         currentAboutSlide = (currentAboutSlide + 1) % aboutSlidesCount;
         updateAboutSlide(currentAboutSlide);
       } else if (aboutEndX - aboutStartX > 40) {
-        // Swipe right -> Prev slide
         currentAboutSlide = (currentAboutSlide - 1 + aboutSlidesCount) % aboutSlidesCount;
         updateAboutSlide(currentAboutSlide);
       }
@@ -275,10 +243,7 @@ function initSwipeGestures() {
   }
 }
 
-
-/* ---------------------------------------------------------------------------
-   FEATURE 7: ACTIVE NAVBAR HIGHLIGHTING ON SCROLL
-   --------------------------------------------------------------------------- */
+// Highlight navbar links when scrolling through sections
 function initScrollHighlighting() {
   const sections = document.querySelectorAll("section");
   const navItems = document.querySelectorAll(".nav-item");
@@ -302,10 +267,7 @@ function initScrollHighlighting() {
   });
 }
 
-
-/* ---------------------------------------------------------------------------
-   FEATURE 8: SCROLL-TRIGGERED ANIMATED NUMERIC COUNTERS
-   --------------------------------------------------------------------------- */
+// Animate numbers in the about section when scrolled into view
 function initCounters() {
   const statNumbers = document.querySelectorAll(".stat-number");
   if (!statNumbers.length) return;
