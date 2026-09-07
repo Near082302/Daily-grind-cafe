@@ -138,7 +138,7 @@ function updateHeroSlide(index) {
   const dots = document.querySelectorAll(".slider-dots .dot");
 
   if (heroTrack) {
-    heroTrack.style.transform = `translateX(-${index * 100}%)`;
+    heroTrack.style.transform = `translateX(-${index * 25}%)`;
 
     dots.forEach((dot, idx) => {
       dot.classList.toggle("active", idx === index);
