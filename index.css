@@ -195,9 +195,10 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 20px 60px;
+  padding: 80px 20px 70px;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
+  background-repeat: no-repeat;
   min-height: calc(100vh - 70px);
   box-sizing: border-box;
   overflow: hidden;
@@ -214,7 +215,7 @@ main {
 .hero-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(35,25,22,0.85) 100%);
+  background: radial-gradient(circle, rgba(0,0,0,0.25) 0%, rgba(35,25,22,0.82) 100%);
   z-index: 1;
 }
 
@@ -234,6 +235,7 @@ main {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
+  display: inline-block;
 }
 
 .hero-content h1 {
@@ -270,7 +272,7 @@ main {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.35);
   cursor: pointer;
   transition: background-color 0.2s, transform 0.2s;
 }
@@ -859,6 +861,7 @@ footer {
     padding: 50px 16px;
   }
 
+  /* Fixed Hero Banner Cropping & Spacing on Mobile */
   .hero-section {
     padding: 0 !important;
     width: 100%;
@@ -866,17 +869,51 @@ footer {
   }
 
   .hero-slide {
-    min-height: calc(100vh - 70px);
-    padding: 60px 20px 50px;
+    /* Set balanced viewport height to avoid severe horizontal clipping of landscape images */
+    min-height: clamp(460px, 62vh, 580px);
+    padding: 48px 20px 56px;
     box-sizing: border-box;
+    background-position: center center;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 8px;
+  }
+
+  .hero-tag {
+    font-size: 0.75rem;
+    padding: 5px 14px;
   }
 
   .hero-content h1 {
-    font-size: 1.85rem;
+    font-size: 1.75rem;
+    margin: 14px 0 12px;
+    line-height: 1.25;
   }
 
   .hero-content p {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .hero-buttons {
+    gap: 12px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 11px 20px;
+    font-size: 0.9rem;
+  }
+
+  .slider-dots {
+    bottom: 16px;
   }
 
   .values-grid,
